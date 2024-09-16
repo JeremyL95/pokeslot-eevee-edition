@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100lvh;
+    background-color: #232323;
+    font-size: 16px;
+    font-family: "montserrat", "san-serif";
+}
+
+ul {
+    list-style: none;
+}
+
+@mixin flexCenter($display, $justify, $align, $direction) {
+    display: $display;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+:root {
+    --primary-text-color: #fff;
+
+    --slot-machine-column: #fcfcfc;
+    --slot-machine-border-radius: 5px;
+}
+
+body {
+    height: 100lvh;
+    padding: 1rem 0.65rem;
+    @include flexCenter(flex, center, center, column);
+}
+
+// start of slot machine
+.slot-machine {
+    margin-inline: auto;
+    width: min(100%, 450px);
+
+    &-display {
+        @include flexCenter(flex, space-between, center, row);
+    }
+
+    &-column {
+        width: 150px;
+        height: 330px;
+        overflow-y: hidden;
+        margin-inline: 0.1rem;
+        background-color: var(--slot-machine-column);
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.4) inset;
+        border-radius: var(--slot-machine-border-radius);
+    }
+
+    &-box {
+        padding-block: 0.5rem;
+        transition: transform 0.1s ease-in-out;
+        transform: translateY(0px); // DEBUG
+    }
+
+    &-card {
+        @include flexCenter(flex, center, center, row);
+        width: 100%;
+        // background-color: pink; //DEBUG
+        // border: 1px solid brown; //DEBUG
+        // height: 90px; //DEBUG
+        padding-block: 0.5rem;
+
+        img {
+            width: 6rem;
+            height: 90px;
+            object-fit: contain;
+        }
+    }
+
+    .buttons {
+        margin-top: 2rem;
+        @include flexCenter(flex, center, center, row);
+
+        button {
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .btn-spin {
+        }
+
+        .btn-reset {
+        }
+    }
+}
+// end of slot machine
+
+// start of footer
+.footer {
+    position: fixed;
+    bottom: 20px;
+    text-align: center;
+
+    p {
+        color: var(--primary-text-color);
+        font-size: 0.75rem;
+    }
+}
+// end of footer
